@@ -154,6 +154,7 @@ main () {
   printf "${bldred}Failed: $failChecks  ${txtrst}-  "
   printf "${bldylw}Warning: $warnChecks  ${txtrst}-  "
   printf "${bldcyn}Notes: $noteChecks"
+  printf "\n"
 
   # integerjson "checks" "$totalChecks"
   # integerjson "score" "$currentScore"
