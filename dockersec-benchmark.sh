@@ -2,15 +2,16 @@
 # ------------------------------------------------------------------------------
 # Dockersec Benchmark for Security Enhanced
 # by @ddiako (https://github.com/ddiako/dockersec-benchmark)
+# --- Last version update: 20240717 --- 
 # 
 # Checks for dozens of common best-practices around deploying Docker containers in production.
 #
-# Fork of docker-bench-security (https://github.com/docker/docker-bench-security)
+# Partly based on docker-bench-security (https://github.com/docker/docker-bench-security)
 # Benchmark inspired by the [CIS Docker Community Edition Benchmark v1.1.0]
 # (https://benchmarks.cisecurity.org/tools2/docker/CIS_Docker_Community_Edition_Benchmark_v1.1.0.pdf)
 # ------------------------------------------------------------------------------
 
-version='1.3.4'
+version='1.5.0'
 
 # Load dependencies
 . ./functions_lib.sh
@@ -94,6 +95,7 @@ beginjson "$version" "$(date +%s)"
 
 # Load all the tests from tests/ and run them
 main () {
+  header "$version"
   # List all running containers
   if [ -z "$exclude" ]; then
     containers=$(docker ps | sed '1d' | awk '{print $NF}')
@@ -145,16 +147,18 @@ main () {
     done
   fi
 
-  printf "%b\n"
-  echo "${txtrst}------------------------------------------------------------------------------"
-  echo "SCORE: $currentScore"
-  printf "\n"
+  printf "%b\n" | tee -a $logger
+  echo "${txtrst}------------------------------------------------------------------------------" | tee -a $logger
+  echo "SCORE: $currentScore" | tee -a $logger
 
-  printf "${bldgrn}Passed: $((totalChecks - failChecks - warnChecks - noteChecks))/$totalChecks  ${txtrst}-  "
-  printf "${bldred}Failed: $failChecks  ${txtrst}-  "
-  printf "${bldylw}Warning: $warnChecks  ${txtrst}-  "
-  printf "${bldcyn}Notes: $noteChecks"
-  printf "\n"
+  printf "\n" | tee -a $logger
+
+  printf "${bldgrn}Passed: $((totalChecks - failChecks - warnChecks - noteChecks))/$totalChecks  ${txtrst}-  " | tee -a $logger
+  printf "${bldred}Failed: $failChecks  ${txtrst}-  " | tee -a $logger
+  printf "${bldylw}Warning: $warnChecks  ${txtrst}-  " | tee -a $logger
+  printf "${bldcyn}Notes: $noteChecks" | tee -a $logger
+  printf "\n" | tee -a $logger
+
 
   # integerjson "checks" "$totalChecks"
   # integerjson "score" "$currentScore"
