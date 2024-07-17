@@ -1,5 +1,5 @@
 #!/bin/sh
-# ------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------------------------------
 # Dockersec Benchmark for Security Enhanced
 # by @ddiako (https://github.com/ddiako/dockersec-benchmark)
 # --- Last version update: 20240717 --- 
@@ -9,7 +9,7 @@
 # Partly based on docker-bench-security (https://github.com/docker/docker-bench-security)
 # Benchmark inspired by the [CIS Docker Community Edition Benchmark v1.1.0]
 # (https://benchmarks.cisecurity.org/tools2/docker/CIS_Docker_Community_Edition_Benchmark_v1.1.0.pdf)
-# ------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------------------------------
 
 version='1.5.0'
 
@@ -71,7 +71,7 @@ if [ -z "$logger" ]; then
   logger="${myname}.log"
 fi
 
-yell_info
+yell_info "$version" | tee -a $logger
 
 # Warn if not root
 ID=$(id -u)
@@ -95,7 +95,6 @@ beginjson "$version" "$(date +%s)"
 
 # Load all the tests from tests/ and run them
 main () {
-  header "$version"
   # List all running containers
   if [ -z "$exclude" ]; then
     containers=$(docker ps | sed '1d' | awk '{print $NF}')
@@ -167,3 +166,4 @@ main () {
 }
 
 main "$@"
+

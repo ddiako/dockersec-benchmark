@@ -111,13 +111,15 @@ get_systemd_service_file() {
 }
 
 yell_info() {
-yell "# ---------------------------------------------------------------------------------------------
-# Dockersec Benchmark for Security Enhanced v1.0
-# by @ddiako (https://github.com/ddiako/dockersec-benchmark)
-#
-# Checks for dozens of common best-practices around deploying Docker containers in production.
-#
-# Fork of docker-bench-security (https://github.com/docker/docker-bench-security).
-# Benchmark inspired by the CIS Docker Community Edition Benchmark v1.1.0.
-# ---------------------------------------------------------------------------------------------"
+yell "# --------------------------------------------------------------------------------------------------------
+# - Dockersec Benchmark for Security Enhanced
+# - by @ddiako (https://github.com/ddiako/dockersec-benchmark)
+# - --- VERSION: $1 ---
+# -
+# - Checks for dozens of common best-practices around deploying Docker containers in production.
+# -
+# - Partly based on docker-bench-security (https://github.com/docker/docker-bench-security)
+# - Benchmark inspired by the [CIS Docker Community Edition Benchmark v1.1.0]
+# - (https://benchmarks.cisecurity.org/tools2/docker/CIS_Docker_Community_Edition_Benchmark_v1.1.0.pdf)
+# --------------------------------------------------------------------------------------------------------"
 }

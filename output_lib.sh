@@ -20,20 +20,6 @@ bldcyn='\033[1;36m' # Cyan
 bldlgr='\033[1;37m' # Light gray
 txtrst='\033[0m'
 
-header () {
-printf "%b\n" "${bldgrn}# --------------------------------------------------------------------------------------------------------"
-printf "%b\n" "${bldgrn}# - Dockersec Benchmark for Security Enhanced"
-printf "%b\n" "${bldgrn}# - by @ddiako (https://github.com/ddiako/dockersec-benchmark)"
-printf "%b\n" "${bldgrn}# - --- VERSION: $1 ---"
-printf "%b\n" "${bldgrn}# -"
-printf "%b\n" "${bldgrn}# - Checks for dozens of common best-practices around deploying Docker containers in production."
-printf "%b\n" "${bldgrn}# -"
-printf "%b\n" "${bldgrn}# - Inspired by docker-bench-security (https://github.com/docker/docker-bench-security)"
-printf "%b\n" "${bldgrn}# - Benchmark inspired by the [CIS Docker Community Edition Benchmark v1.1.0]"
-printf "%b\n" "${bldgrn}# - (https://benchmarks.cisecurity.org/tools2/docker/CIS_Docker_Community_Edition_Benchmark_v1.1.0.pdf)"
-printf "%b\n" "${bldgrn}# --------------------------------------------------------------------------------------------------------"
-}
-
 logit () {
   printf "%b\n" "$1" | tee -a "$logger"
 }
