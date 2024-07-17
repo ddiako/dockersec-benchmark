@@ -6,7 +6,7 @@ The Dockersec Benchmark is a script that checks for dozens of common
 best-practices around deploying Docker containers in production. The tests are
 all automated, and are inspired by the [CIS Docker Community Edition Benchmark v1.1.0](https://benchmarks.cisecurity.org/tools2/docker/CIS_Docker_Community_Edition_Benchmark_v1.1.0.pdf).
 
-Dockersec Benchmark is a fork of docker-bench-security (https://github.com/docker/docker-bench-security).
+Dockersec Benchmark is partly based on docker-bench-security (https://github.com/docker/docker-bench-security).
 The idea behind this fork is to add verbosity and mitigation to the different checks, as well as to improve
 the scoring calculation and the categorization of the different tests.
 According to that, some tests have been adapted to check differently the CIS points.
